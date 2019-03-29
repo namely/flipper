@@ -46,8 +46,6 @@ module Flipper
       builder = Rack::Builder.new
       yield builder if block_given?
       builder.use Rack::Protection, rack_protection_options
-      builder.use Rack::Protection
-      builder.use Rack::Protection::AuthenticityToken
       builder.use Rack::MethodOverride
       builder.use Flipper::Middleware::SetupEnv, flipper, env_key: env_key
       builder.use Flipper::Middleware::Memoizer, env_key: env_key
